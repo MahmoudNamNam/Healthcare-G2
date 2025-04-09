@@ -4,10 +4,10 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains import LLMChain
 from langchain.memory import ConversationBufferMemory
 
-# 🎯 Load Ollama model
-llm = OllamaLLM(model="Koesn/llama3-8b-instruct")  # Use your preferred Ollama model
+#  Load Ollama model
+llm = OllamaLLM(model="Koesn/llama3-8b-instruct") 
 
-# 🧠 Enhanced Therapist Prompt Template
+# Enhanced Therapist Prompt Template
 prompt = ChatPromptTemplate.from_template(
     """
 You are a compassionate, thoughtful, and supportive AI therapist.
@@ -23,10 +23,10 @@ User: {user_input}
 Therapist:"""
 )
 
-# 🔄 Memory to keep chat history
+#  Memory to keep chat history
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 
-# 🧵 LLMChain for the therapy conversation
+#  LLMChain for the therapy conversation
 conversation = LLMChain(
     llm=llm,
     prompt=prompt,
@@ -34,21 +34,20 @@ conversation = LLMChain(
     verbose=False
 )
 
-# 🌿 Streamlit Frontend
+# Streamlit Frontend
 st.set_page_config(page_title="EmpathyBot - AI Therapist", page_icon="🧠")
 st.title("🧠 EmpathyBot: Your AI Therapist")
 st.markdown("Welcome. I'm here to listen and support you. Feel free to share what's on your mind. 💬")
 
-# 💾 Session state to store full conversation
+#  Session state to store full conversation
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# 🗨️ Show conversation history
+# Show conversation history
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
-# ✍️ Chat Input
 user_input = st.chat_input("How are you feeling today?")
 
 if user_input:
