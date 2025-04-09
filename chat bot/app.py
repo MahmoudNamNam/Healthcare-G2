@@ -35,8 +35,8 @@ conversation = LLMChain(
 )
 
 # Streamlit Frontend
-st.set_page_config(page_title="EmpathyBot - AI Therapist", page_icon="🧠")
-st.title("🧠 EmpathyBot: Your AI Therapist")
+st.set_page_config(page_title="AI Therapist", page_icon="🧠")
+st.title("AI Therapist")
 st.markdown("Welcome. I'm here to listen and support you. Feel free to share what's on your mind. 💬")
 
 #  Session state to store full conversation
